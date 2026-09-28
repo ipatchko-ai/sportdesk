@@ -24,6 +24,7 @@ type Tournament = {
   extra: string
   logo_url: string
   category: string
+  promoted: boolean
 }
 
 export default function OrganizerDashboard() {
