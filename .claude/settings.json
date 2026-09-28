@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "PowerShell(*)",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebFetch"
+    ],
+    "defaultMode": "default",
+    "additionalDirectories": [
+      "C:\\Users\\User\\Desktop\\football-booking-clone"
+    ]
+  }
+}

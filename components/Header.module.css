@@ -1,0 +1,187 @@
+.header {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.branding:hover {
+  opacity: 0.8;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #333;
+  margin: 0;
+  line-height: 1;
+}
+
+.tagline {
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.faqButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.2s, opacity 0.2s;
+  cursor: pointer;
+}
+
+.faqButton:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.faqIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.authButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.loginBtn,
+.registerBtn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.loginBtn {
+  background: #0c73fe;
+  color: #fff;
+}
+
+.loginBtn:hover {
+  background: #0a5fd4;
+}
+
+.registerBtn {
+  background: #ff6d00;
+  color: #fff;
+}
+
+.registerBtn:hover {
+  background: #e66200;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .branding {
+    gap: 2px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .tagline {
+    font-size: 10px;
+  }
+
+  .rightSection {
+    gap: 12px;
+  }
+
+  .faqButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .faqIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .authButtons {
+    gap: 8px;
+  }
+
+  .loginBtn,
+  .registerBtn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .tagline {
+    font-size: 9px;
+  }
+
+  .rightSection {
+    gap: 8px;
+  }
+
+  .faqButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .faqIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .authButtons {
+    gap: 6px;
+  }
+
+  .loginBtn,
+  .registerBtn {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+}

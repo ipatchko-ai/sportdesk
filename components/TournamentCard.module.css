@@ -1,0 +1,190 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card.promoted {
+  border: 2px solid #ff6d00;
+  background: #fffaf5;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.cardInfo {
+  flex: 1;
+}
+
+.cardCity {
+  color: #0c73fe;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  min-height: 44px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.cardLogo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.cardPrice {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  display: flex;
+  font-size: 14px;
+  color: #666;
+}
+
+.specValue {
+  color: #555;
+  font-size: 13px;
+}
+
+.badge {
+  display: inline-block;
+  background: #ff6d00;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+  }
+
+  .cardHeader {
+    margin-bottom: 14px;
+  }
+
+  .cardCity {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    min-height: 40px;
+  }
+
+  .cardLogo {
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+  }
+
+  .cardPrice {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .specs {
+    gap: 6px;
+  }
+
+  .spec {
+    font-size: 13px;
+  }
+
+  .specValue {
+    font-size: 12px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .cardHeader {
+    margin-bottom: 12px;
+  }
+
+  .cardCity {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+
+  .cardTitle {
+    font-size: 15px;
+    min-height: 36px;
+  }
+
+  .cardLogo {
+    width: 36px;
+    height: 36px;
+    margin-left: 6px;
+  }
+
+  .cardPrice {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  .specs {
+    gap: 5px;
+  }
+
+  .spec {
+    font-size: 12px;
+  }
+
+  .specValue {
+    font-size: 11px;
+  }
+
+  .badge {
+    font-size: 9px;
+    padding: 3px 7px;
+    margin-top: 5px;
+  }
+}
