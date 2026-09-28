@@ -10,15 +10,15 @@ import styles from './organizer.module.css'
 type Tournament = {
   id: string
   name: string
-  sport: string
-  event_type: string
+  sport: 'football' | 'hockey' | 'basketball' | 'tennis' | 'mma'
+  event_type: 'tournament' | 'team_training' | 'player_training' | 'player_tryout'
   country: string
   city: string
   dates: string
-  status: string
+  status: 'draft' | 'published' | 'deleted'
   created_at: string
   age_group: string
-  price: number
+  price: string
   duration: string
   meals_included: boolean
   extra: string
