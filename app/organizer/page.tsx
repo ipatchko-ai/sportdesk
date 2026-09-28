@@ -17,6 +17,13 @@ type Tournament = {
   dates: string
   status: string
   created_at: string
+  age_group: string
+  price: number
+  duration: string
+  meals_included: boolean
+  extra: string
+  logo_url: string
+  category: string
 }
 
 export default function OrganizerDashboard() {
