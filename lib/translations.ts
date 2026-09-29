@@ -12,7 +12,7 @@ export const translations = {
     tournaments: 'Tournaments',
     teamTraining: 'Team Training',
     playerTraining: 'Player Training',
-    playerTryout: 'Player Tryout',
+    playerTryout: 'Player Trials',
 
     // Sports
     football: 'Football',

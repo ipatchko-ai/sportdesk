@@ -7,7 +7,7 @@ import styles from './CreateTournamentForm.module.css'
 type FormData = {
   name: string
   sport: 'football' | 'hockey' | 'basketball' | 'tennis' | 'mma'
-  event_type: 'tournament' | 'team_training' | 'player_training' | 'player_tryout'
+  event_type: 'tournament' | 'team_training' | 'player_training' | 'player_trials'
   country: string
   city: string
   dates: string
@@ -177,7 +177,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             <option value="tournament">Tournament</option>
             <option value="team_training">Team Training</option>
             <option value="player_training">Individual Training</option>
-            <option value="player_tryout">Player Tryout</option>
+            <option value="player_trials">Player Trials</option>
           </select>
         </div>
       </div>

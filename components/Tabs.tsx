@@ -4,14 +4,14 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useLanguage } from '@/lib/LanguageContext'
 import styles from './Tabs.module.css'
 
-type EventType = 'tournament' | 'team_training' | 'player_training' | 'player_tryout'
+type EventType = 'tournament' | 'team_training' | 'player_training' | 'player_trials'
 type Sport = 'football' | 'hockey' | 'basketball' | 'tennis' | 'mma'
 
 const EVENT_TABS: { key: 'tournaments' | 'teamTraining' | 'playerTraining' | 'playerTryout'; value: EventType }[] = [
   { key: 'tournaments', value: 'tournament' },
   { key: 'teamTraining', value: 'team_training' },
   { key: 'playerTraining', value: 'player_training' },
-  { key: 'playerTryout', value: 'player_tryout' },
+  { key: 'playerTryout', value: 'player_trials' },
 ]
 
 const SPORT_TABS: { key: 'football' | 'hockey' | 'basketball' | 'tennis' | 'mma'; value: Sport }[] = [

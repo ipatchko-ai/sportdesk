@@ -11,7 +11,7 @@ type Tournament = {
   id: string
   name: string
   sport: 'football' | 'hockey' | 'basketball' | 'tennis' | 'mma'
-  event_type: 'tournament' | 'team_training' | 'player_training' | 'player_tryout'
+  event_type: 'tournament' | 'team_training' | 'player_training' | 'player_trials'
   country: string
   city: string
   dates: string
@@ -170,7 +170,7 @@ function MyTournamentsSection({ tournaments }: { tournaments: Tournament[] }) {
     tournament: 'Tournaments',
     team_training: 'Team Training',
     player_training: 'Individual Training',
-    player_tryout: 'Player Tryouts'
+    player_trials: 'Player Trials'
   }
 
   if (editingId) {

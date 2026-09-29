@@ -1,5 +1,5 @@
 export type Category = 'tournament' | 'gathering' | 'campus'
-export type EventType = 'tournament' | 'team_training' | 'player_training' | 'player_tryout'
+export type EventType = 'tournament' | 'team_training' | 'player_training' | 'player_trials'
 export type Sport = 'football' | 'hockey' | 'basketball' | 'tennis' | 'mma'
 export type Duration = '1 day' | 'Weekend' | 'Week'
 

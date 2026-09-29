@@ -8,7 +8,7 @@ type Tournament = {
   id: string
   name: string
   sport: 'football' | 'hockey' | 'basketball' | 'tennis' | 'mma'
-  event_type: 'tournament' | 'team_training' | 'player_training' | 'player_tryout'
+  event_type: 'tournament' | 'team_training' | 'player_training' | 'player_trials'
   country: string
   city: string
   dates: string
@@ -150,7 +150,7 @@ export default function EditTournamentForm({
             <option value="tournament">Турнир</option>
             <option value="team_training">Командная тренировка</option>
             <option value="player_training">Индивидуальная тренировка</option>
-            <option value="player_tryout">Просмотр игроков</option>
+            <option value="player_trials">Player Trials</option>
           </select>
         </div>
       </div>
