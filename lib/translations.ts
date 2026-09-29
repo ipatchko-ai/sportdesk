@@ -76,6 +76,9 @@ export const translations = {
     campus: 'Campus',
   },
   cs: {
+    // Brand
+    brandName: 'SportDesk',
+
     // Header
     tagline: 'Najdi. Rezervuj. Hraj.',
     login: 'Přihlásit se',
@@ -149,6 +152,9 @@ export const translations = {
     campus: 'Kemp',
   },
   sk: {
+    // Brand
+    brandName: 'SportDesk',
+
     // Header
     tagline: 'Nájdi. Rezervuj. Hraj.',
     login: 'Prihlásiť sa',
@@ -222,6 +228,9 @@ export const translations = {
     campus: 'Kemp',
   },
   lv: {
+    // Brand
+    brandName: 'SportDesk',
+
     // Header
     tagline: 'Atrodi. Rezervē. Spēlē.',
     login: 'Pieslēgties',
