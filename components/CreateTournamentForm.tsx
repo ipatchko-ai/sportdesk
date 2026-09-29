@@ -62,7 +62,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
       const { data: { session } } = await supabase.auth.getSession()
 
       if (!session) {
-        setError('Необходимо войти в систему')
+        setError('You must be logged in')
         setLoading(false)
         return
       }
@@ -81,7 +81,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
 
       if (insertError) {
         console.error('Insert error:', insertError)
-        setError('Ошибка при сохранении турнира')
+        setError('Error saving tournament')
         setLoading(false)
         return
       }
@@ -108,7 +108,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
       setLoading(false)
     } catch (err) {
       console.error('Submit error:', err)
-      setError('Произошла ошибка')
+      setError('An error occurred')
       setLoading(false)
     }
   }
@@ -134,7 +134,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label className={styles.label}>Название турнира *</label>
+          <label className={styles.label}>Tournament Name *</label>
           <input
             type="text"
             name="name"
@@ -142,14 +142,14 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             value={formData.name}
             onChange={handleChange}
             required
-            placeholder="Например: Летний кубок 2026"
+            placeholder="e.g., Summer Cup 2026"
           />
         </div>
       </div>
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label className={styles.label}>Вид спорта *</label>
+          <label className={styles.label}>Sport *</label>
           <select
             name="sport"
             className={styles.select}
@@ -157,16 +157,16 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             onChange={handleChange}
             required
           >
-            <option value="football">⚽ Футбол</option>
-            <option value="hockey">🏒 Хоккей</option>
-            <option value="basketball">🏀 Баскетбол</option>
-            <option value="tennis">🎾 Теннис</option>
-            <option value="mma">🥊 ММА</option>
+            <option value="football">⚽ Football</option>
+            <option value="hockey">🏒 Hockey</option>
+            <option value="basketball">🏀 Basketball</option>
+            <option value="tennis">🎾 Tennis</option>
+            <option value="mma">🥊 MMA</option>
           </select>
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Тип мероприятия *</label>
+          <label className={styles.label}>Event Type *</label>
           <select
             name="event_type"
             className={styles.select}
@@ -174,17 +174,17 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             onChange={handleChange}
             required
           >
-            <option value="tournament">Турнир</option>
-            <option value="team_training">Командная тренировка</option>
-            <option value="player_training">Индивидуальная тренировка</option>
-            <option value="player_tryout">Просмотр игроков</option>
+            <option value="tournament">Tournament</option>
+            <option value="team_training">Team Training</option>
+            <option value="player_training">Individual Training</option>
+            <option value="player_tryout">Player Tryout</option>
           </select>
         </div>
       </div>
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label className={styles.label}>Страна *</label>
+          <label className={styles.label}>Country *</label>
           <select
             name="country"
             className={styles.select}
@@ -192,14 +192,14 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             onChange={handleChange}
             required
           >
-            <option value="Czech Republic">Чехия</option>
-            <option value="Slovakia">Словакия</option>
-            <option value="Latvia">Латвия</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Latvia">Latvia</option>
           </select>
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Город *</label>
+          <label className={styles.label}>City *</label>
           <input
             type="text"
             name="city"
@@ -207,14 +207,14 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             value={formData.city}
             onChange={handleChange}
             required
-            placeholder="Например: Прага"
+            placeholder="e.g., Prague"
           />
         </div>
       </div>
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label className={styles.label}>Даты проведения *</label>
+          <label className={styles.label}>Dates *</label>
           <input
             type="text"
             name="dates"
@@ -222,12 +222,12 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             value={formData.dates}
             onChange={handleChange}
             required
-            placeholder="Например: 15-17 июля 2026"
+            placeholder="e.g., July 15-17, 2026"
           />
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Возрастная группа *</label>
+          <label className={styles.label}>Age Group *</label>
           <input
             type="text"
             name="age_group"
@@ -235,14 +235,14 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             value={formData.age_group}
             onChange={handleChange}
             required
-            placeholder="Например: 10-12 лет"
+            placeholder="e.g., 10-12 years"
           />
         </div>
       </div>
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label className={styles.label}>Цена *</label>
+          <label className={styles.label}>Price *</label>
           <input
             type="text"
             name="price"
@@ -250,25 +250,25 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             value={formData.price}
             onChange={handleChange}
             required
-            placeholder="Например: 5000 CZK"
+            placeholder="e.g., 5000 CZK"
           />
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Продолжительность</label>
+          <label className={styles.label}>Duration</label>
           <input
             type="text"
             name="duration"
             className={styles.input}
             value={formData.duration}
             onChange={handleChange}
-            placeholder="Например: 3 дня"
+            placeholder="e.g., 3 days"
           />
         </div>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.label}>URL логотипа</label>
+        <label className={styles.label}>Logo URL</label>
         <input
           type="text"
           name="logo_url"
@@ -277,18 +277,18 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
           onChange={handleChange}
           placeholder="https://..."
         />
-        <p className={styles.hint}>Оставьте пустым для использования логотипа по умолчанию</p>
+        <p className={styles.hint}>Leave empty to use default logo</p>
       </div>
 
       <div className={styles.field}>
-        <label className={styles.label}>Дополнительная информация</label>
+        <label className={styles.label}>Additional Information</label>
         <textarea
           name="extra"
           className={styles.textarea}
           value={formData.extra}
           onChange={handleChange}
           rows={4}
-          placeholder="Дополнительные детали о турнире..."
+          placeholder="Additional details about the tournament..."
         />
       </div>
 
@@ -301,7 +301,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             onChange={handleChange}
             className={styles.checkbox}
           />
-          <span>Питание включено</span>
+          <span>Meals included</span>
         </label>
 
         <label className={styles.checkboxLabel}>
@@ -312,7 +312,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
             onChange={handleChange}
             className={styles.checkbox}
           />
-          <span>Продвигать на главной странице</span>
+          <span>Promote on homepage</span>
         </label>
       </div>
 
@@ -323,7 +323,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
           onClick={(e) => handleSubmit(e, 'draft')}
           disabled={loading}
         >
-          {loading ? 'Сохранение...' : 'Сохранить как черновик'}
+          {loading ? 'Saving...' : 'Save as Draft'}
         </button>
         <button
           type="button"
@@ -331,7 +331,7 @@ export default function CreateTournamentForm({ onSuccess }: { onSuccess: () => v
           onClick={(e) => handleSubmit(e, 'published')}
           disabled={loading}
         >
-          {loading ? 'Публикация...' : 'Опубликовать'}
+          {loading ? 'Publishing...' : 'Publish'}
         </button>
       </div>
     </form>

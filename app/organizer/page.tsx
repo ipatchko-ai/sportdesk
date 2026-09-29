@@ -95,7 +95,7 @@ export default function OrganizerDashboard() {
             onClick={() => setActiveSection('my-tournaments')}
           >
             <span className={styles.navIcon}>📋</span>
-            Мои турниры
+            My Tournaments
           </button>
 
           <button
@@ -103,7 +103,7 @@ export default function OrganizerDashboard() {
             onClick={() => setActiveSection('create')}
           >
             <span className={styles.navIcon}>➕</span>
-            Создать турнир
+            Create Tournament
           </button>
 
           <button
@@ -111,25 +111,21 @@ export default function OrganizerDashboard() {
             onClick={() => setActiveSection('applicants')}
           >
             <span className={styles.navIcon}>👥</span>
-            Заявки
+            Applications
           </button>
         </nav>
-
-        <div className={styles.sidebarFooter}>
-          <button className={styles.logoutBtn} onClick={handleLogout}>
-            <span className={styles.navIcon}>🚪</span>
-            Выйти
-          </button>
-        </div>
       </aside>
 
       <main className={styles.main}>
         <div className={styles.mainHeader}>
           <h1 className={styles.mainTitle}>
-            {activeSection === 'my-tournaments' && 'Мои турниры'}
-            {activeSection === 'create' && 'Создать турнир'}
-            {activeSection === 'applicants' && 'Заявки участников'}
+            {activeSection === 'my-tournaments' && 'My Tournaments'}
+            {activeSection === 'create' && 'Create Tournament'}
+            {activeSection === 'applicants' && 'Tournament Applications'}
           </h1>
+          <button className={styles.logoutBtn} onClick={handleLogout}>
+            Log Out
+          </button>
         </div>
 
         <div className={styles.content}>
@@ -163,18 +159,18 @@ function MyTournamentsSection({ tournaments }: { tournaments: Tournament[] }) {
   }, {} as Record<string, Tournament[]>)
 
   const sportLabels: Record<string, string> = {
-    football: '⚽ Футбол',
-    hockey: '🏒 Хоккей',
-    basketball: '🏀 Баскетбол',
-    tennis: '🎾 Теннис',
-    mma: '🥊 ММА'
+    football: '⚽ Football',
+    hockey: '🏒 Hockey',
+    basketball: '🏀 Basketball',
+    tennis: '🎾 Tennis',
+    mma: '🥊 MMA'
   }
 
   const eventTypeLabels: Record<string, string> = {
-    tournament: 'Турниры',
-    team_training: 'Командные тренировки',
-    player_training: 'Индивидуальные тренировки',
-    player_tryout: 'Просмотры игроков'
+    tournament: 'Tournaments',
+    team_training: 'Team Training',
+    player_training: 'Individual Training',
+    player_tryout: 'Player Tryouts'
   }
 
   if (editingId) {
@@ -194,8 +190,8 @@ function MyTournamentsSection({ tournaments }: { tournaments: Tournament[] }) {
     <div className={styles.tournamentsGrid}>
       {Object.keys(groupedTournaments).length === 0 ? (
         <div className={styles.emptyState}>
-          <p className={styles.emptyText}>У вас пока нет созданных турниров</p>
-          <p className={styles.emptyHint}>Нажмите "Создать турнир" чтобы добавить первый</p>
+          <p className={styles.emptyText}>You don't have any tournaments yet</p>
+          <p className={styles.emptyHint}>Click "Create Tournament" to add your first one</p>
         </div>
       ) : (
         Object.entries(groupedTournaments).map(([key, items]) => {
@@ -212,14 +208,14 @@ function MyTournamentsSection({ tournaments }: { tournaments: Tournament[] }) {
                       <h4 className={styles.tournamentName}>{tournament.name}</h4>
                       <div className={styles.cardActions}>
                         <span className={`${styles.statusBadge} ${styles[`status_${tournament.status}`]}`}>
-                          {tournament.status === 'draft' && 'Черновик'}
-                          {tournament.status === 'published' && 'Опубликован'}
-                          {tournament.status === 'deleted' && 'Удален'}
+                          {tournament.status === 'draft' && 'Draft'}
+                          {tournament.status === 'published' && 'Published'}
+                          {tournament.status === 'deleted' && 'Deleted'}
                         </span>
                         <button
                           className={styles.editBtn}
                           onClick={() => setEditingId(tournament.id)}
-                          title="Редактировать"
+                          title="Edit"
                         >
                           ✏️
                         </button>
@@ -277,7 +273,7 @@ function ApplicantsSection({ tournaments }: { tournaments: Tournament[] }) {
   function exportToCSV() {
     if (applicants.length === 0) return
 
-    const headers = ['Имя родителя', 'Email', 'Телефон', 'Имя ребенка', 'Возраст', 'Доп. информация', 'Дата заявки']
+    const headers = ['Parent Name', 'Email', 'Phone', 'Child Name', 'Age', 'Additional Info', 'Application Date']
     const rows = applicants.map(app => [
       app.parent_name,
       app.parent_email,
@@ -285,7 +281,7 @@ function ApplicantsSection({ tournaments }: { tournaments: Tournament[] }) {
       app.child_name,
       app.child_age,
       app.additional_info || '',
-      new Date(app.created_at).toLocaleString('ru-RU')
+      new Date(app.created_at).toLocaleString('en-US')
     ])
 
     const csvContent = [
@@ -308,22 +304,22 @@ function ApplicantsSection({ tournaments }: { tournaments: Tournament[] }) {
   return (
     <div className={styles.applicantsSection}>
       <div className={styles.applicantsHeader}>
-        <h2 className={styles.sectionTitle}>Заявки на турниры</h2>
+        <h2 className={styles.sectionTitle}>Tournament Applications</h2>
         {selectedTournamentId && applicants.length > 0 && (
           <button className={styles.exportBtn} onClick={exportToCSV}>
-            📥 Экспортировать в CSV
+            📥 Export to CSV
           </button>
         )}
       </div>
 
       <div className={styles.tournamentSelector}>
-        <label className={styles.selectorLabel}>Выберите турнир:</label>
+        <label className={styles.selectorLabel}>Select tournament:</label>
         <select
           className={styles.selectorSelect}
           value={selectedTournamentId}
           onChange={(e) => setSelectedTournamentId(e.target.value)}
         >
-          <option value="">-- Выберите турнир --</option>
+          <option value="">-- Select a tournament --</option>
           {publishedTournaments.map(tournament => (
             <option key={tournament.id} value={tournament.id}>
               {tournament.name} ({tournament.city}, {tournament.dates})
@@ -333,12 +329,12 @@ function ApplicantsSection({ tournaments }: { tournaments: Tournament[] }) {
       </div>
 
       {loading && (
-        <p className={styles.loadingText}>Загрузка заявок...</p>
+        <p className={styles.loadingText}>Loading applications...</p>
       )}
 
       {!loading && selectedTournamentId && applicants.length === 0 && (
         <div className={styles.emptyApplicants}>
-          <p className={styles.emptyText}>На этот турнир пока нет заявок</p>
+          <p className={styles.emptyText}>No applications for this tournament yet</p>
         </div>
       )}
 
@@ -347,13 +343,13 @@ function ApplicantsSection({ tournaments }: { tournaments: Tournament[] }) {
           <table className={styles.table}>
             <thead>
               <tr>
-                <th>Имя родителя</th>
+                <th>Parent Name</th>
                 <th>Email</th>
-                <th>Телефон</th>
-                <th>Имя ребенка</th>
-                <th>Возраст</th>
-                <th>Дополнительно</th>
-                <th>Дата</th>
+                <th>Phone</th>
+                <th>Child Name</th>
+                <th>Age</th>
+                <th>Additional Info</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
@@ -365,7 +361,7 @@ function ApplicantsSection({ tournaments }: { tournaments: Tournament[] }) {
                   <td>{applicant.child_name}</td>
                   <td>{applicant.child_age}</td>
                   <td>{applicant.additional_info || '—'}</td>
-                  <td>{new Date(applicant.created_at).toLocaleDateString('ru-RU')}</td>
+                  <td>{new Date(applicant.created_at).toLocaleDateString('en-US')}</td>
                 </tr>
               ))}
             </tbody>
@@ -393,9 +389,9 @@ function EditTournamentSection({
   return (
     <div className={styles.editSection}>
       <div className={styles.editHeader}>
-        <h2 className={styles.editTitle}>Редактирование турнира</h2>
+        <h2 className={styles.editTitle}>Edit Tournament</h2>
         <button className={styles.cancelBtn} onClick={onCancel}>
-          ← Назад к списку
+          ← Back to list
         </button>
       </div>
       <EditTournamentForm

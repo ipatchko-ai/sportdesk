@@ -25,7 +25,7 @@ export default function LoginPage() {
       })
 
       if (signInError) {
-        setError('Неверный email или пароль')
+        setError('Invalid email or password')
         setLoading(false)
         return
       }
@@ -34,7 +34,7 @@ export default function LoginPage() {
         router.push('/organizer')
       }
     } catch (err) {
-      setError('Произошла ошибка. Попробуйте снова.')
+      setError('An error occurred. Please try again.')
       setLoading(false)
     }
   }
@@ -44,7 +44,7 @@ export default function LoginPage() {
       <div className={styles.loginBox}>
         <div className={styles.header}>
           <h1 className={styles.logo}>SportDesk</h1>
-          <p className={styles.subtitle}>Вход для организаторов</p>
+          <p className={styles.subtitle}>Organizer Login</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -67,7 +67,7 @@ export default function LoginPage() {
           </div>
 
           <div className={styles.field}>
-            <label className={styles.label}>Пароль</label>
+            <label className={styles.label}>Password</label>
             <input
               type="password"
               className={styles.input}
@@ -83,13 +83,13 @@ export default function LoginPage() {
             className={styles.submitBtn}
             disabled={loading}
           >
-            {loading ? 'Вход...' : 'Войти'}
+            {loading ? 'Logging in...' : 'Log In'}
           </button>
         </form>
 
         <div className={styles.footer}>
           <a href="/" className={styles.backLink}>
-            ← Вернуться на главную
+            ← Back to home
           </a>
         </div>
       </div>
