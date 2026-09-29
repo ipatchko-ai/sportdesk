@@ -5,6 +5,7 @@ export async function fetchTournaments(params: SearchParams): Promise<Tournament
   let query = supabase
     .from('tournaments')
     .select('*')
+    .eq('status', 'published')
 
   // Filter by event type (new primary filter)
   if (params.event_type) {
