@@ -9,15 +9,11 @@ export async function fetchTournaments(params: SearchParams): Promise<Tournament
   // Filter by event type (new primary filter)
   if (params.event_type) {
     query = query.eq('event_type', params.event_type)
-  } else {
-    query = query.eq('event_type', 'tournament')
   }
 
   // Filter by sport (new secondary filter)
   if (params.sport) {
     query = query.eq('sport', params.sport)
-  } else {
-    query = query.eq('sport', 'football')
   }
 
   // Legacy category filter (for backward compatibility)
