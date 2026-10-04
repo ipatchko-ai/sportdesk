@@ -27,8 +27,18 @@ export async function fetchTournaments(params: SearchParams): Promise<Tournament
     query = query.eq('country', params.country)
   }
 
-  // Filter by age
-  if (params.age && params.age !== 'All Ages') {
+  // Filter by age - slider has priority over dropdown
+  if (params.age_min && params.age_max) {
+    // Age range slider is active - filter by numeric range
+    // Parse age_group field (e.g., "8-12" -> min=8, max=12)
+    // We'll use a more flexible approach: check if age_group overlaps with the range
+    const minAge = parseInt(params.age_min)
+    const maxAge = parseInt(params.age_max)
+
+    // This will be handled by filtering in-memory since Supabase doesn't easily parse string ranges
+    // We'll fetch all and filter below
+  } else if (params.age && params.age !== 'All Ages') {
+    // Dropdown is active
     query = query.eq('age_group', params.age)
   }
 
@@ -61,5 +71,37 @@ export async function fetchTournaments(params: SearchParams): Promise<Tournament
     return []
   }
 
-  return data || []
+  let tournaments = data || []
+
+  // Apply age range slider filter in-memory if active
+  if (params.age_min && params.age_max) {
+    const minAge = parseInt(params.age_min)
+    const maxAge = parseInt(params.age_max)
+
+    tournaments = tournaments.filter(tournament => {
+      const ageGroup = tournament.age_group
+      if (!ageGroup) return false
+
+      // Parse age_group formats like "8-12", "10-14", "6-8 years", "14-18"
+      const match = ageGroup.match(/(\d+)-(\d+)/)
+      if (match) {
+        const groupMin = parseInt(match[1])
+        const groupMax = parseInt(match[2])
+
+        // Check if ranges overlap
+        return groupMin <= maxAge && groupMax >= minAge
+      }
+
+      // If age_group doesn't match expected format, try single number
+      const singleMatch = ageGroup.match(/(\d+)/)
+      if (singleMatch) {
+        const age = parseInt(singleMatch[1])
+        return age >= minAge && age <= maxAge
+      }
+
+      return false
+    })
+  }
+
+  return tournaments
 }

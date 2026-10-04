@@ -1,14 +1,20 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useLanguage } from '@/lib/LanguageContext'
 import { SearchParams } from '@/lib/types'
 import { useRouter, useSearchParams } from 'next/navigation'
+import AgeRangeSlider from './AgeRangeSlider'
 import styles from './FilterSidebar.module.css'
 
 export default function FilterSidebar({ currentParams }: { currentParams: SearchParams }) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { t } = useLanguage()
+
+  const [ageMin, setAgeMin] = useState(6)
+  const [ageMax, setAgeMax] = useState(30)
+  const [isSliderActive, setIsSliderActive] = useState(false)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -55,6 +61,13 @@ export default function FilterSidebar({ currentParams }: { currentParams: Search
     const params = new URLSearchParams(searchParams.toString())
     const value = e.target.value
 
+    // Reset slider when dropdown is used
+    setIsSliderActive(false)
+    setAgeMin(6)
+    setAgeMax(30)
+    params.delete('age_min')
+    params.delete('age_max')
+
     if (value && value !== 'All Ages') {
       params.set('age', value)
     } else {
@@ -63,6 +76,51 @@ export default function FilterSidebar({ currentParams }: { currentParams: Search
 
     router.push(`/?${params.toString()}`)
   }
+
+  const handleSliderChange = (min: number, max: number) => {
+    setAgeMin(min)
+    setAgeMax(max)
+    setIsSliderActive(true)
+
+    const params = new URLSearchParams(searchParams.toString())
+
+    // Remove dropdown age filter when slider is used
+    params.delete('age')
+
+    // Set slider range parameters
+    params.set('age_min', min.toString())
+    params.set('age_max', max.toString())
+
+    router.push(`/?${params.toString()}`)
+  }
+
+  const handleSliderReset = () => {
+    setIsSliderActive(false)
+    setAgeMin(6)
+    setAgeMax(30)
+
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete('age_min')
+    params.delete('age_max')
+
+    router.push(`/?${params.toString()}`)
+  }
+
+  // Initialize slider state from URL params
+  useEffect(() => {
+    const minFromUrl = searchParams.get('age_min')
+    const maxFromUrl = searchParams.get('age_max')
+
+    if (minFromUrl && maxFromUrl) {
+      setAgeMin(Number(minFromUrl))
+      setAgeMax(Number(maxFromUrl))
+      setIsSliderActive(true)
+    } else {
+      setAgeMin(6)
+      setAgeMax(30)
+      setIsSliderActive(false)
+    }
+  }, [searchParams])
 
   return (
     <aside className={styles.sidebar}>
@@ -94,6 +152,16 @@ export default function FilterSidebar({ currentParams }: { currentParams: Search
             <option value="14-18">14-18 {t('years')}</option>
           </select>
         </div>
+
+        <AgeRangeSlider
+          min={6}
+          max={30}
+          currentMin={ageMin}
+          currentMax={ageMax}
+          onChange={handleSliderChange}
+          onReset={handleSliderReset}
+          isActive={isSliderActive}
+        />
       </div>
 
       <form onSubmit={handleSubmit} className={styles.refineForm}>

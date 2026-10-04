@@ -29,6 +29,8 @@ export interface SearchParams {
   sport?: Sport
   country?: string
   age?: string
+  age_min?: string
+  age_max?: string
   sort_by?: 'price_asc' | 'price_desc'
   duration?: string | string[]
   meals?: 'on'
