@@ -10,7 +10,7 @@ import styles from './FilterSidebar.module.css'
 export default function FilterSidebar({ currentParams }: { currentParams: SearchParams }) {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   const [ageMin, setAgeMin] = useState(6)
   const [ageMax, setAgeMax] = useState(30)
@@ -161,6 +161,7 @@ export default function FilterSidebar({ currentParams }: { currentParams: Search
           onChange={handleSliderChange}
           onReset={handleSliderReset}
           isActive={isSliderActive}
+          language={language}
         />
       </div>
 

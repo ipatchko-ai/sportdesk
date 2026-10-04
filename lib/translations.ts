@@ -41,6 +41,7 @@ export const translations = {
     week: 'Week',
     mealsIncluded: 'Meals included',
     apply: 'Apply',
+    age: 'Age',
 
     // Card
     featured: 'Featured',
@@ -117,6 +118,7 @@ export const translations = {
     week: 'Týden',
     mealsIncluded: 'Strava zahrnuta',
     apply: 'Použít',
+    age: 'Věk',
 
     // Card
     featured: 'Doporučeno',
@@ -193,6 +195,7 @@ export const translations = {
     week: 'Týždeň',
     mealsIncluded: 'Strava zahrnutá',
     apply: 'Použiť',
+    age: 'Vek',
 
     // Card
     featured: 'Odporúčané',
@@ -269,6 +272,7 @@ export const translations = {
     week: 'Nedēļa',
     mealsIncluded: 'Ēdināšana iekļauta',
     apply: 'Piemērot',
+    age: 'Vecums',
 
     // Card
     featured: 'Ieteicams',

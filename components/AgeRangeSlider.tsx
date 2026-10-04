@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import styles from './AgeRangeSlider.module.css'
+import { translations, Language } from '@/lib/translations'
 
 interface AgeRangeSliderProps {
   min: number
@@ -11,6 +12,7 @@ interface AgeRangeSliderProps {
   onChange: (min: number, max: number) => void
   onReset: () => void
   isActive: boolean
+  language: Language
 }
 
 export default function AgeRangeSlider({
@@ -20,8 +22,10 @@ export default function AgeRangeSlider({
   currentMax,
   onChange,
   onReset,
-  isActive
+  isActive,
+  language
 }: AgeRangeSliderProps) {
+  const t = translations[language]
   const [minVal, setMinVal] = useState(currentMin)
   const [maxVal, setMaxVal] = useState(currentMax)
   const minValRef = useRef(currentMin)
@@ -65,7 +69,7 @@ export default function AgeRangeSlider({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <span className={styles.label}>Age</span>
+        <span className={styles.label}>{t.age}</span>
         {isActive && (
           <button
             type="button"
@@ -80,8 +84,8 @@ export default function AgeRangeSlider({
 
       <div className={styles.valueDisplay}>
         {minVal === min && maxVal === max
-          ? `From ${min} to ${max} years`
-          : `From ${minVal} to ${maxVal} years`}
+          ? `${minVal}-${maxVal} ${t.years}`
+          : `${minVal}-${maxVal} ${t.years}`}
       </div>
 
       <div className={styles.sliderContainer}>
