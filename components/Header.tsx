@@ -17,10 +17,9 @@ export default function Header() {
         </Link>
 
         <div className={styles.rightSection}>
-          <LanguageSwitcher />
-
-          <Link href="/faq" className={styles.faqButton} title="FAQ">
+          <Link href="/faq" className={styles.faqButton} title={t('support')}>
             <img src="/faq-icon.svg" alt="FAQ" className={styles.faqIcon} />
+            <span className={styles.supportText}>{t('support')}</span>
           </Link>
 
           <div className={styles.authButtons}>
@@ -31,6 +30,8 @@ export default function Header() {
               {t('register')}
             </Link>
           </div>
+
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

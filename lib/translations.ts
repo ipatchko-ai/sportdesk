@@ -7,6 +7,7 @@ export const translations = {
     tagline: 'Find it. Book it. Play it.',
     login: 'Login',
     register: 'Register',
+    support: 'Support',
 
     // Tabs
     tournaments: 'Tournaments',
@@ -84,6 +85,7 @@ export const translations = {
     tagline: 'Najdi. Rezervuj. Hraj.',
     login: 'Přihlásit se',
     register: 'Registrovat',
+    support: 'Podpora',
 
     // Tabs
     tournaments: 'Turnaje',
@@ -161,6 +163,7 @@ export const translations = {
     tagline: 'Nájdi. Rezervuj. Hraj.',
     login: 'Prihlásiť sa',
     register: 'Registrovať',
+    support: 'Podpora',
 
     // Tabs
     tournaments: 'Turnaje',
@@ -238,6 +241,7 @@ export const translations = {
     tagline: 'Atrodi. Rezervē. Spēlē.',
     login: 'Pieslēgties',
     register: 'Reģistrēties',
+    support: 'Atbalsts',
 
     // Tabs
     tournaments: 'Turnīri',

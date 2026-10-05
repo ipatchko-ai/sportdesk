@@ -52,22 +52,30 @@
 .faqButton {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
   transition: transform 0.2s, opacity 0.2s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .faqButton:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   opacity: 0.8;
 }
 
 .faqIcon {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.supportText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
 }
 
 .authButtons {
@@ -128,13 +136,16 @@
   }
 
   .faqButton {
-    width: 36px;
-    height: 36px;
+    padding: 6px 12px;
   }
 
   .faqIcon {
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .supportText {
+    font-size: 12px;
   }
 
   .authButtons {
@@ -166,13 +177,16 @@
   }
 
   .faqButton {
-    width: 32px;
-    height: 32px;
+    padding: 5px 10px;
   }
 
   .faqIcon {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .supportText {
+    font-size: 11px;
   }
 
   .authButtons {
